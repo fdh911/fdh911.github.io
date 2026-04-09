@@ -21,11 +21,8 @@
 title: fdh911 devlogs
 email: freedownloadhere13@gmail.com
 description: >-
-  This site will contain brief overviews of
-  topics that I will be researching, mostly
-  related to low level development: the Windows API,
-  Reverse Engineering, Programming, Debugging,
-  Cheats & Anti-Cheats, etc.
+  Windows API, Reverse Engineering, Programming, 
+  Debugging, Cheats & Anti-Cheats, etc.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://fdh911.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: fdh911

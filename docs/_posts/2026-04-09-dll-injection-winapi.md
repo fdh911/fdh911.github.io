@@ -2,6 +2,8 @@
 layout: post
 title: "Simple DLL Injection via the Windows API"
 ---
+All of the code in this article can be found [here](https://github.com/fdh911/ez_dll_injector).
+
 I've recently started learning more about the Windows API and gained a surface level understanding of virtual memory, threads, modules, etc. As such, I wanted to apply this newfound knowledge by building a basic DLL injector, which makes use of some simple WinAPI functionality.
 
 Prerequisites: You're expected to be familiar with the basics of programming in C++ and have a vague idea of how the WinAPI works.
@@ -149,3 +151,9 @@ CloseHandle(proc_handle);
 
 return 0;
 ```
+
+# Testing it out
+
+To verify whether this actually works, we'll write a very simple DLL which creates a console window that will periodically display a message until we close it. You can find the code [here](https://github.com/fdh911/ez_dll_injector/blob/master/example_dll/src/Main.cc).
+
+![The code in action]("/assets/dll_injection1.gif")
