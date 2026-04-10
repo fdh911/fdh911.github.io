@@ -156,4 +156,4 @@ return 0;
 
 To verify whether this actually works, we'll write a very simple DLL which creates a console window that will periodically display a message until we close it. You can find the code [here](https://github.com/fdh911/ez_dll_injector/blob/master/example_dll/src/Main.cc).
 
-![The code in action]("/assets/dll_injection1.gif")
+![The code in action]({{ "/assets/dll_injection1.gif" | relative_url }})
