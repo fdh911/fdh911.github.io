@@ -110,7 +110,7 @@ FARPROC loadlibrary_address = GetProcAddress(kernel32_handle, "LoadLibraryA");
 assert(loadlibrary_address != NULL);
 ```
 
-This piece of code actually relies on a querk related to how Windows loads known system DLL's. You might have noticed that we're actually finding the address of LoadLibrary within our own process, not within the target process. It turns out that this is perfectly okay: since Kernel32.dll is considered a "KnownDLL", it's actually only loaded once by the system, and all processes that want to reference it use the same base module address. This is a very cool topic that I might cover in a future article.
+This piece of code actually relies on a quirk related to how Windows loads known system DLL's. You might have noticed that we're actually finding the address of LoadLibrary within our own process, not within the target process. It turns out that this is perfectly okay: since Kernel32.dll is considered a "KnownDLL", it's actually only loaded once by the system, and all processes that want to reference it use the same base module address. This is a very cool topic that I might cover in a future article.
 
 Now we have everything that we need in order to perform the injection itself:
 
@@ -157,3 +157,15 @@ return 0;
 To verify whether this actually works, we'll write a very simple DLL which creates a console window that will periodically display a message until we close it. You can find the code [here](https://github.com/fdh911/ez_dll_injector/blob/master/example_dll/src/Main.cc).
 
 ![The code in action]({{ "/assets/dll_injection1.gif" | relative_url }})
+
+# There's a catch
+
+(WIP: architecture incompatibilities)
+
+# Design considerations
+
+Let's look back on what we've done so far. We created a simple tool which loads a DLL into a process' memory, by making the Windows API do the dirty work for us. 
+
+That is to say, if an anticheat were to be watching these WinAPI functions (which it probably is), this would immediately expose what we're up to.
+
+The next step in this endeavour would be to figure out what LoadLibrary is really doing and simulate its behaviour, to avoid making use of the Windows API directly.
